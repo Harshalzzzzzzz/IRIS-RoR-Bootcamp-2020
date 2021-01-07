@@ -2,13 +2,13 @@
 # any non-lower case alphabet (A..Z) to corresponding lower case
 # alphabet
 def lower_case(words)
-  raise NotImplementedError # TODO
+  words.map(&:downcase)
 end
 
 # Similar to `lower_case`, this function modifies the array in-place
 # and does not return any value.
 def lower_case!(words)
-  raise NotImplementedError # TODO
+  words.map!(&:downcase)
 end
 
 # Given a prefix and an array of words, return an array containing
@@ -18,7 +18,7 @@ end
 # words_with_prefix('apple', ['apple', 'ball', 'applesauce']) would
 # return the words 'apple' and 'applesauce'.
 def words_with_prefix(prefix, words)
-  raise NotImplementedError # TODO
+  words.select { |word| word.start_with?(prefix) }
 end
 
 # The similarity score between two words is defined as the length of
@@ -34,11 +34,29 @@ end
 # The function `similarity_score` takes two words and returns the
 # similarity score (an integer).
 def similarity_score(word_1, word_2)
-  raise NotImplementedError # TODO
+  smaller_len = word_1.size < word_2.size ? word_1.size : word_2.size
+
+  # Find the first index where the words are different.
+  # If there is no such index, return the smaller length.
+  (0...smaller_len).find { |i| word_1[i] != word_2[i] } || smaller_len
 end
 
 # Given a chosen word and an array of words, return an array of word(s)
 # with the maximum similarity score in the order they appear.
 def most_similar_words(chosen_word, words)
-  raise NotImplementedError # TODO
+  max_score = 0
+  similar_words = []
+
+  words.each do |word|
+    score = similarity_score(chosen_word, word)
+
+    if score > max_score
+      max_score = score
+      similar_words = [word]
+    elsif score == max_score
+      similar_words.append(word)
+    end
+  end
+
+  similar_words
 end

@@ -38,16 +38,23 @@
 # their function arguments were incorrect.
 def fizz_buzz(n:, x: 3, y: 5)
   raise ArgumentError if n < 0 || x <= 0 || y <= 0
-
+  # map construct helps us transform the contents of an Array/Range/Hash
   (1..n).map do |i|
+    # Check if element is divisible by both x & y 
     if i % x == 0 && i % y == 0
       'FizzBuzz'
+    # Check if element is divisible by only x, [note: elseif rules out the where its divisble by both] 
     elsif i % x == 0
       'Fizz'
+    # simmilarly check if element is divisible by only y
     elsif i % y == 0
       'Buzz'
     else
+      # when element is devisible by neither, replace it with its string equivalent
       i.to_s
     end
   end
+  # Note ruby methods implicitly return the value of the last executed intructions
+  # In this case the modified range
+  # Read mode about it here https://cutt.ly/XjlMYhJ
 end

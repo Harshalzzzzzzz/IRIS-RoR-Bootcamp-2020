@@ -13,6 +13,7 @@
 - Now run `$ rake db:migrate`
 -  Now generate the views for devise using `$ rails generate devise:views users`
 - `$ rails generate migration AddUserToBlogs user:references`
+
 Every User has a unique primary key (user_id).
 The  primary key (i.e. user_id of Users table) will be used in a different table for reference (in Blogs table here) is called foreign key.
 Start the server `$ rails server` and navigate to localhost:3000/blogs. You will be redirected to a login page.
@@ -22,10 +23,11 @@ Start the server `$ rails server` and navigate to localhost:3000/blogs. You will
 - Create CRUD actions for the BlogsController
 - To store user_id for create action : @blogs.user = current_user
 - `@blog = Blog.where(user_id: current_user.id)` This line enables us to fetch only those posts which were made by this User
-- Add a migration for Blogs `visibility - boolean`, and add a controller method for updating the field to display only those where `visibility: true`.
+- Add a migration for Blogs `visibility (boolean)`, and add a controller method for updating the field to display only those where `visibility: true`.
+- Add a migration to user - `admin` and check so that only admin members can regulate the visibility. 
 - Add routes for the actions/methods.
 - Add before_action for update and delete action while allowing users to view show and index pages without authentication. 
-- Add [associations](https://guides.rubyonrails.org/association_basics.html) for the User and Blog table in models.
+- Add [associations](https://guides.rubyonrails.org/association_basics.html) for the User and Blog table in models. 
 
  ## References :
  

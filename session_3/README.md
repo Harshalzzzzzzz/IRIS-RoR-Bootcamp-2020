@@ -26,3 +26,14 @@ Start the server `$ rails server` and navigate to localhost:3000/blogs. You will
 - Add routes for the actions/methods.
 - Add before_action for update and delete action while allowing users to view show and index pages without authentication. 
 - Add [associations](https://guides.rubyonrails.org/association_basics.html) for the User and Blog table in models.
+
+You can also update or create records  by using rails console to run ActiveRecord commands. 
+For eg, Run `$ rails console`, then type `Blog.create(title: "Hello", content: "Blog App", visibility: true)`
+
+ ## References :
+ 
+ - https://guides.rubyonrails.org/v2.3.11/association_basics.html
+ - https://guides.rubyonrails.org/v5.2/routing.html
+ - https://www.sitepoint.com/10-ruby-on-rails-best-practices-3/
+ - https://guides.rubyonrails.org/action_controller_overview.html
+ - https://api.rubyonrails.org/v6.1.0/classes/ActionController/StrongParameters.html

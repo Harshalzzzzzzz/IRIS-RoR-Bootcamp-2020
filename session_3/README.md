@@ -16,7 +16,6 @@ To do this, enter this command in your terminal:
 ```
 $ rails generate scaffold Blog title:string article:text
 $ rake db:migrate
-
 ```
 
 ## Alter Databases Using Migrations
@@ -127,7 +126,7 @@ class BlogsController < ApplicationController
   before_action :require_author, only: [:edit, :update, :destroy]
 
   def require_author
-    redirect_to(root_path) unless @blog.user_id == current_user
+    redirect_to root_path unless @blog.user_id == current_user
   end
 end
 ```

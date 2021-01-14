@@ -116,12 +116,16 @@ class BlogsController < ApplicationController
   before_action :require_author, only: [:edit, :update, :destroy]
 
   def require_author
-    redirect_to(root_path) unless @blog.user == current_user
+    redirect_to(root_path) unless @blog.user_id == current_user
   end
 end
 ```
 - To store user_id for create action :
 ```
+def new
+  @blog = Blog.new
+end
+  
 def create
    @blog  = Blog.new(blog_params)
    @blogs.user = current_user
@@ -139,7 +143,7 @@ def index
   @blogs = Blog.where(user_id: current_user.id)
 end
 ```
-- To add routes for the controller actions :
+- To add [routes](https://guides.rubyonrails.org/routing.html) for the controller actions :
 ```
 ## app/config/routes.rb 
 Rails.application.routes.draw do

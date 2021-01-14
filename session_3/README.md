@@ -136,7 +136,7 @@ The `current_user` is a helper that simply returns the model class relating to t
 - To customize your index page so that only the blogs made by the current user are visible, 
 ```
 def index
-  @blog = Blog.where(user_id: current_user.id)
+  @blogs = Blog.where(user_id: current_user.id)
 end
 ```
 - To add routes for the controller actions :

@@ -17,7 +17,7 @@ When you generate new migrations to add models or columns, Active Record tracks 
 To add a new column, run : 
 `$ rails generate migration AddAuthorToBlogs author:string`.
 
-This will generate a migration in `db/migrations/<YYYYMMDDHHMMSS>_add_author_to_blogs.rb` that looks like :
+This will generate a migration in `db/migration/<YYYYMMDDHHMMSS>_add_author_to_blogs.rb` that looks like :
 ```
 class AddAuthorToBlogs < ActiveRecord::Migration
   def change

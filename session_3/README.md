@@ -8,6 +8,17 @@ We will continue with Rails Controller and Devise, a gem used for authentication
 
 > Before we start with devise, let's understand how various models can have associations between other tables and how migrations can be used to change tables and database.
 
+## Rails Scaffolding :
+
+Rails scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job. It also generates what is required for performing all CRUD actions on the resource.
+To do this, enter this command in your terminal:
+
+```
+$ rails generate scaffold Blog title:string article:text
+$ rake db:migrate
+
+```
+
 ## Alter Databases Using Migrations
 
 [Migrations](https://github.com/IRIS-NITK/IRIS-RoR-Bootcamp-2020/tree/main/session_2/student_registry) are a convenient way to alter your database schema over time in a consistent way. 

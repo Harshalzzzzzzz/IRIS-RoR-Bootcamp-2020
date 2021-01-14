@@ -6,7 +6,7 @@ We will continue with Rails Controller and Devise, a gem used for authentication
 - To create the database `$ rake db:create`
 - Run `$ rake db:migrate` to add migrations to the database. This will update your db/schema.rb file to match the structure of your database.
 
-> Before we start with devise, let's understand how various models can have associations between other tables and how migrations can be used to change tables and database.
+> Before we start with devise, let's understand how various models can have associations between other tables and how migrations and scaffolding can be used to change tables and database.
 
 ## Rails Scaffolding :
 
@@ -51,7 +51,7 @@ A Migration adds a table with a primary key column called `id` which will also b
 
 ## Associations in Relational Database :
 
-An association is a connection between two Active Record models. For example, consider a simple Rails application that includes a [model](https://github.com/IRIS-NITK/IRIS-RoR-Bootcamp-2020/tree/main/session_2) for blog articles and a model for books. Each author can have many blog articles, but an article can belong only to a particular user. 
+An association is a connection between two Active Record models. For example, consider a simple Rails application that includes a [model](https://github.com/IRIS-NITK/IRIS-RoR-Bootcamp-2020/tree/main/session_2) for blog articles and a model for users. Each author can have many blog articles, but an article can belong only to a particular user. 
 
 A `belongs_to` association sets up a connection with another model, such that each instance of the declaring model "belongs to" one instance of the other model.
 

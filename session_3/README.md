@@ -10,9 +10,13 @@ We will continue with Rails Controller and Devise, a gem used for authentication
 
 ## Alter Databases Using Migrations
 
-[Migrations](https://github.com/IRIS-NITK/IRIS-RoR-Bootcamp-2020/tree/main/session_2/student_registry) are a convenient way to alter your database schema over time in a consistent way. When you generate new migrations to add models or columns, Active Record tracks which migrations have already been run so all you have to do is update your source and run `rake db:migrate`. Active Record will work out which migrations should be run and update your `db/schema.rb` file accordingly. Example,
+[Migrations](https://github.com/IRIS-NITK/IRIS-RoR-Bootcamp-2020/tree/main/session_2/student_registry) are a convenient way to alter your database schema over time in a consistent way. 
 
-For adding a new column, run `$ rails generate migration AddAuthorToBlogs author:string`.
+When you generate new migrations to add models or columns, Active Record tracks which migrations have already been run so all you have to do is update your source and run `rake db:migrate`. Active Record will work out which migrations should be run and update your `db/schema.rb` file accordingly. For example,
+
+To add a new column, run : 
+`$ rails generate migration AddAuthorToBlogs author:string`.
+
 This will generate a migration in `db/migrations/<YYYYMMDDHHMMSS>_add_author_to_blogs.rb` that looks like :
 ```
 class AddAuthorToBlogs < ActiveRecord::Migration
@@ -38,7 +42,12 @@ A Migration adds a table with a primary key column called `id` which will also b
 
 An association is a connection between two Active Record models. For example, consider a simple Rails application that includes a [model](https://github.com/IRIS-NITK/IRIS-RoR-Bootcamp-2020/tree/main/session_2) for blog articles and a model for books. Each author can have many blog articles, but an article can belong only to a particular user. 
 
-A `belongs_to` association sets up a connection with another model, such that each instance of the declaring model "belongs to" one instance of the other model. A `has_one` association indicates that one other model has a reference to this model. That model can be fetched through this association, while a `has_many` association is similar to has_one, but indicates a one-to-many connection with another model.
+A `belongs_to` association sets up a connection with another model, such that each instance of the declaring model "belongs to" one instance of the other model.
+
+A `has_one` association indicates that one other model has a reference to this model. 
+
+While a `has_many` association is similar to has_one, but indicates a one-to-many connection with another model.
+
 In order to have a connection between two models, with Active Record associations, we can streamline these operations by declaratively telling Rails that there is a connection between the two models. For example, with associations the model declarations would look like this:
 
 ```
@@ -88,7 +97,9 @@ Start the server `$ rails server` and navigate to localhost:3000/blogs. You will
 
 ## Controller :
 
-- Create CRUD actions for the controller the BlogsController. (create, new, show, index, edit, update,destroy)
+After integrating our application with device, we can proceed with controller actions.
+
+- Create CRUD actions for the BlogsController. (create, new, show, index, edit, update,destroy)
 - To store user_id for create action :
 ```
 def create
@@ -138,8 +149,7 @@ end
 ## Tasks (Optional):
 - You can start with integrating devise by following the above steps.
 - Add a migration for Blogs model `visibility (boolean)`, and create a controller method `update_visibility` for updating the field to display only those blogs where `visibility: true`. Note that only the author should be able to set the visibility.
-- Add routes for the actions/methods.
-- Set an appropriate `before_action` for `update_visibility`. 
+- Set an appropriate `before_action` for `update_visibility` and modify your `routes.rb` file. 
 
  ## References :
  

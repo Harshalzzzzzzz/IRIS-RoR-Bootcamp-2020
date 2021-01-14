@@ -70,8 +70,7 @@ Here `dependent: :destroy` controls what happens to the associated objects when 
 - Run the following command to generate Devise configuration file `config/initializers/devise.rb` which contains a lot of different configuration options:
   `$ rails generate devise:install`
 - To generate a User model required by devise for authentication, run `$ rails generate devise User` 
-
-> This creates a `user.rb` model file and a migration that adds all the necessary fields.
+ This creates a `user.rb` model file and a migration that adds all the necessary fields.
 
 - Now to generate the views for devise login, run `$ rails generate devise:views users`
 
@@ -112,7 +111,7 @@ def create
    end
 end
 ```
-
+The `current_user` is a helper that simply returns the model class relating to the signed in user. It returns nil if a user has not, as yet, signed in.
 - Now, in order to ensure that a user is logged in for an action to be run, use `before_action` in controller :
 ```
 class BlogsController < ApplicationController
@@ -121,7 +120,8 @@ class BlogsController < ApplicationController
  .
  .
 end 
-```
+``` 
+The `authenticate_user!` class method (controller), ensures a logged in user is available to all, or a specified set of controller actions.
 - To ensure that records created by a user can be updated or deleted by a user only,   
 ```
 before_action :require_author, only: [:edit, :update, :destroy]

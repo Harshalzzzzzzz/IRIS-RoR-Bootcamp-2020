@@ -99,6 +99,27 @@ Start the server `$ rails server` and navigate to localhost:3000/blogs. You will
 After integrating our application with device, we can proceed with controller actions.
 
 - Create CRUD actions for the BlogsController. (create, new, show, index, edit, update,destroy)
+- Now, in order to ensure that a user is logged in for an action to be run, use `before_action` in controller :
+```
+class BlogsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+ .
+ .
+ .
+end 
+``` 
+The `authenticate_user!` class method (controller), ensures a logged in user is available to all, or a specified set of controller actions.
+- To ensure that records created by a user can be updated or deleted by a user only,   
+```
+class BlogsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_author, only: [:edit, :update, :destroy]
+
+  def require_author
+    redirect_to(root_path) unless @blog.user == current_user
+  end
+end
+```
 - To store user_id for create action :
 ```
 def create
@@ -112,24 +133,6 @@ def create
 end
 ```
 The `current_user` is a helper that simply returns the model class relating to the signed in user. It returns nil if a user has not, as yet, signed in.
-- Now, in order to ensure that a user is logged in for an action to be run, use `before_action` in controller :
-```
-class BlogsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
- .
- .
- .
-end 
-``` 
-The `authenticate_user!` class method (controller), ensures a logged in user is available to all, or a specified set of controller actions.
-- To ensure that records created by a user can be updated or deleted by a user only,   
-```
-before_action :require_author, only: [:edit, :update, :destroy]
-
-def require_author
-   redirect_to(root_path) unless @blog.user == current_user
-end
-```
 - To customize your index page so that only the blogs made by the current user are visible, 
 ```
 def index

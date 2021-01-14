@@ -26,11 +26,9 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog #{@blog.title} was successfully created.' }
-        format.json { render :show, status: :created, location: @blog }
+        redirect_to root_path, flash[:notice] = 'Created blog #{@blog.title}' 
       else
-        format.html { render :new }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
+        flash[:error] = 'Error' 
       end
   end
 
@@ -38,10 +36,9 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1.json
   def update
     if @blog.update(blog_params)
-      flash[:notice] = 'Updated #{@blog.title}' 
-      redirect_to root_path 
+      redirect_to root_path, flash[:notice] = 'Updated #{@blog.title}' 
     else
-      flash[:error] = 'Not Updated #{@blog.title}' 
+      flash[:error] = 'Not Updated ' 
     end
   end
 
@@ -50,8 +47,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog = Blog.find(params[:id])
     if @blog.delete   
-      flash[:notice] = 'Deleted!'   
-      redirect_to root_path   
+      redirect_to root_path, flash[:notice] = 'Deleted!'      
     else   
       flash[:error] = 'Failed to delete!'   
     end     
